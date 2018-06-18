@@ -1,0 +1,212 @@
+<div class="publicSection" >
+
+  <div id = "box">
+  <h1 style="font-family:arial;color:black; ">UPLOAD YOUR GOODS</h1></br>
+  <div id="bbox">
+
+    <p style="font-family:arial;color:#1874CD;font-size:20px;">Please add a title for your trade.</p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+    <input class = "blackcolor" method="POST" type="text" placeholder="eg:An iphone 6ps used one year" name="Ntitle" required="True" ><br/><br/>
+
+    
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">Please classify your item first.</p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+          <select name="classify">
+          <option value="clothing">Clothing</option>
+          <option value="staple" selected>Staple goods</option>
+          <option value="cosmetics">Cosmetics</option>
+          <option value="medicine">Health Care Products and Medicine</option>
+          <option value="jewelry">Jewelry</option>
+          <option value="digital" >Digital Products</option>
+          <option value="electrical">Household Electrical Appliances</option>
+          </select>
+          <br/><br/>
+
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">Please add photo(s) for your item.</p>
+            <p style="font-family:arial;color:#1874CD;;font-size:15px;">(3 pics at most)</p>
+		<div class="pics" >
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+      <input type="file"  name="userfile" id="doc" multiple="multiple"  style="width:150px;" onchange="javascript:setImagePreviews();" accept="image/*" />
+      <div id="dd" style=" width:990px;height:200px"></div>
+    </div>  
+
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">How much did you get your item? </p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+         <input class = "blackcolor" type="number" method="POST" name="Oprice" placeholder="eg:6000" min="0" step="1" required="True">
+          <br/><br/>
+
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">Please estimate your item's value. </p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+          <input class = "blackcolor" type="number" name="Oprice2" method="POST" placeholder="eg:2000" min="0" step="1" required="True"><br/>
+          <br/>
+  
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">When did you  get your item?</p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+          <input class = "blackcolor" method="POST" type="date" name="Bdate" placeholder="eg:2016-2-12" required="True"><br/><br/>
+    
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">How did you get your item?</p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+          <input class = "blackcolor" type="text" method="POST" placeholder="eg:I bought it on Taobao." name="Oapproach" required="True">
+          <br><br>
+      
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;"> Please choose the classifications of the things that you want to exchange.</p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+          <select name="classify2">
+          <option value="clothing">Clothing</option>
+          <option value="staple" selected>Staple goods</option>
+          <option value="cosmetics">Cosmetics</option>
+          <option value="medicine">Health Care Products and Medicine</option>
+          <option value="jewelry">Jewelry</option>
+          <option value="digital" >Digital Products</option>
+          <option value="electrical">Household Electrical Appliances</option>
+          </select>
+          <br/><br/>
+    <p style="font-family:arial;color:#1874CD;;font-size:20px;">Please enter the name of item you want:</p>
+    
+    <?php echo form_open_multipart('User/do_upload');?>
+          <input class = "blackcolor" type="text" method="POST" placeholder="eg:iphone 6s." name="e_name" required="True">
+          <br><br>     
+
+          <br><input class = "text" type="submit" style="border:none;background:none;cursor:pointer; font-family:arial;color:#1874CD;;font-size:20px; background-color:black; " name="submit" value="Upload Now" href="homepage.html"><br/><br/>
+
+            
+  </div>    
+
+    
+    <script type="text/javascript">
+       function setImagePreviews(avalue) {
+            var docObj = document.getElementById("doc");
+            var dd = document.getElementById("dd");
+            dd.innerHTML = "";
+            var fileList = docObj.files;
+
+            if (fileList.length<4) {
+
+              for (var i = 0; i < fileList.length; i++) 
+              {            
+                  dd.innerHTML += "<div style='float:left' > <img id='img" + i + "'  /> </div>";
+
+                  var imgObjPreview = document.getElementById("img"+i); 
+
+                  if (docObj.files && docObj.files[i]) 
+                  {
+                        imgObjPreview.style.display = 'block';
+                        imgObjPreview.style.width = '150px';
+                        imgObjPreview.style.height = '180px';
+
+                        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+                        imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
+                  }
+                  else 
+                  {
+                        //IE下，使用滤镜
+
+                        docObj.select();
+                        var imgSrc = document.selection.createRange().text;
+                        alert(imgSrc)
+                        var localImagId = document.getElementById("img" + i);
+
+                        //必须设置初始大小
+
+                        localImagId.style.width = "150px";
+                        localImagId.style.height = "180px";
+
+                        //图片异常的捕捉，防止用户修改后缀来伪造图片
+
+                         try 
+                         {
+                              localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+
+                              localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+                          }
+                          catch (e) 
+                          {
+                              alert("Error format, please choose your image again.");
+                              return false;
+                          }
+
+                          imgObjPreview.style.display = 'none';
+                          document.selection.empty();
+
+                  }
+              }  
+            }
+            else{
+                  alert(" Please upload at most 3 pics!");
+
+                  for (var i = 0; i < 3; i++) 
+                  {            
+                          dd.innerHTML += "<div style='float:left' > <img id='img" + i + "'  /> </div>"; 
+
+                          var imgObjPreview = document.getElementById("img"+i); 
+
+                  if (docObj.files && docObj.files[i]) 
+                  {
+                        imgObjPreview.style.display = 'block';
+                        imgObjPreview.style.width = '150px';
+                        imgObjPreview.style.height = '180px';
+
+                        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+                        imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
+                  }
+                  else 
+                  {
+                        //IE下，使用滤镜
+
+                        docObj.select();
+                        var imgSrc = document.selection.createRange().text;
+                        alert(imgSrc)
+                        var localImagId = document.getElementById("img" + i);
+
+                        //必须设置初始大小
+
+                        localImagId.style.width = "150px";
+                        localImagId.style.height = "180px";
+
+                        //图片异常的捕捉，防止用户修改后缀来伪造图片
+
+                         try 
+                         {
+                              localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+
+                              localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+                          }
+                          catch (e) 
+                          {
+                              alert("Error format, please choose your image again.");
+                              return false;
+                          }
+
+                          imgObjPreview.style.display = 'none';
+                  
+                          document.selection.empty();
+                  }
+                  
+                  }
+
+            }
+
+        return true;
+
+    }
+    </script>
+	<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+	
+
+
+
+
+			</div>
+			<!--/centen_bor-->
+		</div>
+		<!--/centen-->
+</body>
+</html>

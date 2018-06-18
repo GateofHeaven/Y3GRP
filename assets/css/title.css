@@ -1,0 +1,79 @@
+#Fixed{
+  position:fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index:50;
+  margin:0px auto 0px auto;
+  border-bottom: 0px solid #F0F0F0;
+  filter:alpha;
+  opacity:0.8;
+  text-align: left;
+  background: black;
+ }
+.hide{
+display:none;
+}
+ #logo{
+  margin-top: 20px;
+  margin-left: 30px;
+ }
+ li{
+  list-style-type: none;
+ }
+.nav ul li{
+ float: right; 
+ top:0;
+}
+.nav ul li a{
+width:100px;/*设置元素宽为80px*/
+height:30px;/*设置高度为28px*/
+line-height:28px;/*设置行距为28px，让文字在每行的中间位置*/
+/*background:#FFF;/*设置元素的背景为红色*/
+color:#F0F0F0;/*文字颜色是白色*/
+font-weight: 900;
+margin:35px 20px 20px 15px;
+font-size:18px;/*用12号字*/
+display:block;/*这个比较关键，因为a本身就是联级元素，本身不具有宽高，用这个把它变成块级元素，这样前面设置的宽和高就能起作用了*/
+text-align:center;/*让文本居中*/
+text-decoration:none; /*去掉下划线*/
+}
+.nav ul li a:hover{ /*这个大概的意思就是当鼠标放到这个a元素的上面时，这个a元素的样式就按下面的代码执行*/
+width:100px;
+height:30px;
+line-height:28px;
+/*border:1px solid #B0B0B0;*/
+color:#ca7379;
+/*background:#B0B0B0;*/
+}
+
+.menu{
+width:142px;
+height:100px;
+top:0px;
+left:0px;
+margin-top:14%;
+margin-left:5.5%;
+background-color:#F0F0F0;
+position:fixed;
+border-radius: 3px;
+}
+
+.menu ul li a{
+line-height:28px;/*设置行距为28px，让文字在每行的中间位置*/
+/*background:#FFF;/*设置元素的背景为红色*/
+color:black;/*文字颜色是白色*/
+font-weight: 600;
+margin:5px 5px 5px 5px;
+font-size:16px;/*用12号字*/
+display:block;/*这个比较关键，因为a本身就是联级元素，本身不具有宽高，用这个把它变成块级元素，这样前面设置的宽和高就能起作用了*/
+text-decoration:none; /*去掉下划线*/
+}
+
+.menu ul li a:hover{ /*这个大概的意思就是当鼠标放到这个a元素的上面时，这个a元素的样式就按下面的代码执行*/
+/*border:1px solid #B0B0B0;*/
+color:#ca7379;
+/*background:#B0B0B0;*/
+}
+
